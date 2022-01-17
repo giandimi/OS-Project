@@ -12,7 +12,7 @@ public class BestFit extends MemoryAllocationAlgorithm {
      * and returns the address of the memory slot, if the process fits.
      * @param p is a Process object that needs tobe loaded into memory.
      * @param currentlyUsedMemorySlots is the Arraylist containing the Memory slots that are occupied by one or more processes.
-     * @return the address of the memory slot where the process is loaded or -1 if the process doesn't fit anywhere.
+     * @return Returns the address of the memory slot where the process is loaded. Returns -1 if the process doesn't fit anywhere.
      */
     public int fitProcess(Process p, ArrayList<MemorySlot> currentlyUsedMemorySlots) {
         boolean fit = false; // Turns true if the process fits in memory.
