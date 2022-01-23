@@ -13,6 +13,8 @@ public class MMU {
         this.currentlyUsedMemorySlots = new ArrayList<MemorySlot>();
     }
 
+
+
     /**
      * loadProcessIntoRam is a boolean method that loads a process into memory, so that it can be executed by CPU
      * and returns it was successful or not.
@@ -22,15 +24,21 @@ public class MMU {
     public boolean loadProcessIntoRAM(Process p) {
         boolean fit = false; // Turns true if the process fits in memory.
 
+        if(currentlyUsedMemorySlots.isEmpty()) {
+            for (int i = 0; i < availableBlockSizes.length; i++) {
+                currentlyUsedMemorySlots.add(null);
+            }
+        }
+
         /* Integer variables to set the arguments of the MemorySlot object,
-        * where process is going to be loaded. */
+         * where process is going to be loaded. */
         int start;
         int end;
         int blockStart;
         int blockEnd;
 
         /* Call of the algorithm's function that loads the process into memory.
-        * Returns the address of the memory, where the process is loaded. */
+         * Returns the address of the memory, where the process is loaded. */
         int address = algorithm.fitProcess(p,currentlyUsedMemorySlots);
 
         if(address != -1 ){     //If the process does fit in memory
@@ -57,3 +65,4 @@ public class MMU {
         return fit;
     }
 }
+
