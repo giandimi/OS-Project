@@ -10,7 +10,7 @@ public class FCFS extends Scheduler {
 
     public Process getNextProcess() {
         Process process=processes.get(0);
-        removeProcess(processes.get(0));
+      //  removeProcess(processes.get(0));
         return process;
     }
 }
