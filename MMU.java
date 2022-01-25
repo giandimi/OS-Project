@@ -5,12 +5,14 @@ public class MMU {
     private final int[] availableBlockSizes;
     private MemoryAllocationAlgorithm algorithm;
     private ArrayList<MemorySlot> currentlyUsedMemorySlots;
+    private ArrayList<Process> loadedProcesses;
 
 
     public MMU(int[] availableBlockSizes, MemoryAllocationAlgorithm algorithm) {
         this.availableBlockSizes = availableBlockSizes;
         this.algorithm = algorithm;
         this.currentlyUsedMemorySlots = new ArrayList<MemorySlot>();
+        this.loadedProcesses = new ArrayList<>();
     }
 
 
@@ -27,6 +29,7 @@ public class MMU {
         if(currentlyUsedMemorySlots.isEmpty()) {
             for (int i = 0; i < availableBlockSizes.length; i++) {
                 currentlyUsedMemorySlots.add(null);
+                loadedProcesses.add(null);
             }
         }
 
@@ -61,8 +64,23 @@ public class MMU {
             currentlyUsedMemorySlots.add(address,slot); //Add the memory slot in the Arraylist
             fit = true; //The process fits in memory, so the variable turns true.
         }
+        if (fit){
+            loadedProcesses.add(address,p);
+        }
 
         return fit;
+    }
+
+
+    public void remove(Process p) {
+       int address = loadedProcesses.indexOf(p);
+       resetCurrentlyUsedMemorySlot(address);
+    }
+
+
+    public void resetCurrentlyUsedMemorySlot(int address) {
+        currentlyUsedMemorySlots.set(address,null);
+        loadedProcesses.set(address,null);
     }
 }
 

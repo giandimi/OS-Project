@@ -7,7 +7,7 @@ public class WorstFit extends MemoryAllocationAlgorithm {
     }
 
     /**
-     * This method is used to load a process into a memory slot using the Best Fit algorithm
+     * This method is used to load a process into a memory slot using the Worst Fit algorithm
      * and returns the address of the memory slot, if the process fits.
      * @param p is a Process object that needs tobe loaded into memory.
      * @param currentlyUsedMemorySlots is the Arraylist containing the Memory slots that are occupied by one or more processes.
@@ -32,7 +32,7 @@ public class WorstFit extends MemoryAllocationAlgorithm {
          */
         for (int i=0; i<availableBlockSizes.length; i++) {
 
-            if (requirementMemory < availableBlockSizes[i]) { //If the block size is large enough.
+            if (requirementMemory <= availableBlockSizes[i]) { //If the block size is large enough.
                 if(currentlyUsedMemorySlots.get(i) != null) { //If the block size is empty.
                     freeSpace = currentlyUsedMemorySlots.get(i).getBlockEnd() - currentlyUsedMemorySlots.get(i).getEnd();
                     if((requirementMemory < freeSpace) && (freeSpace > worstFit) ) {

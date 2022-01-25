@@ -1,16 +1,36 @@
+/**
+ * Η κλαση FCFC χρησιμοποιηται για να ηλοποιησει τον αλγοριθμο δρομολογησης
+ * FCFS. Η FCFC ειναι υποκλαση της κλασης Scheduler και κληρονομει τα πεδια και
+ * τις ιδιοτιτες της.
+ */
 public class FCFS extends Scheduler {
-
+    /**
+     * Ο κατασκευαστης της κλασης δεν δεχεται ορισματα. Με την
+     * συναρτηση Super() κληρονομουνται ολα τα χαρακτηριστικα της υπερκλασης.
+     */
     public FCFS() {
         super();
     }
+
+    /**
+     *
+     * @param p ειναι ενα ορισμα το οποιο ειναι τυπου δεδομενων Process
+     * Η μεθοδος ειναι abstract..Η μεθοδος χρησιμοποιηται για να προσθεσει
+     * μια διεργασια στο ArrayList των διεργασιων.
+     */
 
     public void addProcess(Process p) {
         processes.add(p);
     }
 
+    /**
+     * Η μεθοδος χρησιμοποιηται για να δειξει ποια διεργασια ειναι
+     * η επομενη για εκτελεση απο την CPU.
+     * @return process που ειναι η διεργασια που θα εκτελεστει στη συνεχεια απο την CPU
+     */
+
     public Process getNextProcess() {
         Process process=processes.get(0);
-      //  removeProcess(processes.get(0));
         return process;
     }
 }

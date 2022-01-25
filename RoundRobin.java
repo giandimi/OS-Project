@@ -44,7 +44,6 @@ public class RoundRobin extends Scheduler {
         /* TODO: you need to add some code here
          * and change the return value */
         Process process = processes.get(0);
-        removeProcess(process);
         return process;
     }
 }
