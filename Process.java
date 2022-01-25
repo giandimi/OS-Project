@@ -53,7 +53,12 @@ public class Process {
     public double getTurnAroundTime() {
         /* TODO: you need to add some code here
          * and change the return value */
-        return this.pcb.getStartTimes().get(0) - this.pcb.getStopTimes().get(this.pcb.getStopTimes().size()-1);
+        try {
+            return this.pcb.getStartTimes().get(0) - this.pcb.getStopTimes().get(this.pcb.getStopTimes().size()-1);
+        } //In case something goes wrong
+		catch (IndexOutOfBoundsException e ) {
+            return CPU.clock - this.pcb.getStartTimes().get(0);
+        }
     }
 
     public int getMemoryRequirements() {

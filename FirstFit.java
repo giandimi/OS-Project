@@ -13,14 +13,15 @@ public class FirstFit extends MemoryAllocationAlgorithm {
         int requirementMemory = p.getMemoryRequirements();
         int i=0;
 
+
         while (i<availableBlockSizes.length && !fit)
         {
-            if (requirementMemory < availableBlockSizes[i])
+            if (requirementMemory <= availableBlockSizes[i])
             {
                 if (currentlyUsedMemorySlots.get(i) != null)
                 {
                     freeSpace = currentlyUsedMemorySlots.get(i).getBlockEnd() - currentlyUsedMemorySlots.get(i).getEnd();
-
+                    System.out.println(freeSpace);
                     if ((requirementMemory < freeSpace))
                     {
                         address = i;
