@@ -64,5 +64,14 @@ public class MMU {
 
         return fit;
     }
+
+    public void remove(Process p) {
+       int address =  currentlyUsedMemorySlots.indexOf(p);
+       resetCurrentlyUsedMemorySlot(address);
+    }
+
+    public void resetCurrentlyUsedMemorySlot(int address) {
+        currentlyUsedMemorySlots.set(address,null);
+    }
 }
 
