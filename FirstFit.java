@@ -13,6 +13,7 @@ public class FirstFit extends MemoryAllocationAlgorithm {
         int requirementMemory = p.getMemoryRequirements();
         int i=0;
 
+
         while (i<availableBlockSizes.length && !fit)
         {
             if (requirementMemory <= availableBlockSizes[i])
