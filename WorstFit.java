@@ -32,7 +32,7 @@ public class WorstFit extends MemoryAllocationAlgorithm {
          */
         for (int i=0; i<availableBlockSizes.length; i++) {
 
-            if (requirementMemory < availableBlockSizes[i]) { //If the block size is large enough.
+            if (requirementMemory <= availableBlockSizes[i]) { //If the block size is large enough.
                 if(currentlyUsedMemorySlots.get(i) != null) { //If the block size is empty.
                     freeSpace = currentlyUsedMemorySlots.get(i).getBlockEnd() - currentlyUsedMemorySlots.get(i).getEnd();
                     if((requirementMemory < freeSpace) && (freeSpace > worstFit) ) {

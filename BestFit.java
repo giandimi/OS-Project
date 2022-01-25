@@ -31,7 +31,7 @@ public class BestFit extends MemoryAllocationAlgorithm {
          */
         for (int i=0; i<availableBlockSizes.length; i++) {
 
-            if (requirementMemory < availableBlockSizes[i]) {
+            if (requirementMemory <= availableBlockSizes[i]) {
                 if(currentlyUsedMemorySlots.get(i) != null) {
                     freeSpace = currentlyUsedMemorySlots.get(i).getBlockEnd() - currentlyUsedMemorySlots.get(i).getEnd();
                     if((requirementMemory < freeSpace) && (freeSpace < bestFit) ) {
