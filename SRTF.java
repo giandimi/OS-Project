@@ -6,6 +6,11 @@ public class SRTF extends Scheduler {
     }
 
     public void addProcess(Process p) {
+
+        if (processes.isEmpty())
+        {
+            processes.add(0,p);
+        }
         for(int i=0;i<processes.size();i++)
         {
             if (p.getBurstTime()<processes.get(i).getBurstTime())
