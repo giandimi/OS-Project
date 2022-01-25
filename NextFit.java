@@ -17,7 +17,7 @@ public class NextFit extends MemoryAllocationAlgorithm {
 
         while (i<availableBlockSizes.length)
         {
-            if (requirementMemory < availableBlockSizes[i])
+            if (requirementMemory <= availableBlockSizes[i])
             {
                 if (currentlyUsedMemorySlots.get(i) != null)
                 {
