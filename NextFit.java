@@ -6,35 +6,39 @@ public class NextFit extends MemoryAllocationAlgorithm {
         super(availableBlockSizes);
     }
 
-
-     static int  count = 0;
-
+    static int  count = 0;
 
     public int fitProcess(Process p, ArrayList<MemorySlot> currentlyUsedMemorySlots) {
         boolean fit = false;
         int address = -1;
-        /* TODO: you need to add some code here
-         * Hint: this should return the memory address where the process was
-         * loaded into if the process fits. In case the process doesn't fit, it
-         * should return -1. */
-
-
+        int freeSpace;
         int requirementMemory = p.getMemoryRequirements();
+        int i = count;
 
-        for (int i=count;i<availableBlockSizes.length;i++)
+        while (i<availableBlockSizes.length)
         {
             if (requirementMemory < availableBlockSizes[i])
             {
-                address=i;
-                fit =true;
-                count=i;
-                break;
+                if (currentlyUsedMemorySlots.get(i) != null)
+                {
+                    freeSpace = currentlyUsedMemorySlots.get(i).getBlockEnd() - currentlyUsedMemorySlots.get(i).getEnd();
 
-
+                    if ((requirementMemory < freeSpace))
+                    {
+                        address = i;
+                        fit = true;
+                        count = i;
+                    }
+                }
+                else
+                {
+                    address = i;
+                    fit = true;
+                    count = i;
+                }
             }
+            i++;
         }
-
-
 
         return address;
     }
